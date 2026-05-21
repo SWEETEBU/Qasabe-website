@@ -15,8 +15,6 @@
   --gold:#c99b3b;
 }
 
-html{ scroll-behavior:smooth; }
-
 body{
   margin:0;
   background:var(--cream);
@@ -42,16 +40,44 @@ h1,h2,h3{
   padding:14px 0;
 }
 
-.navbar-brand{
+.logo{
   font-family:Georgia, serif;
   font-size:28px;
   font-weight:bold;
+  color:var(--navy);
+}
+
+.nav-icons{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.icon-btn{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:white;
+  color:var(--navy);
+  font-size:22px;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.icon-btn:hover{
+  background:var(--gold);
+  color:white;
+  transform:translateY(-4px) scale(1.1);
+  box-shadow:0 0 15px rgba(201,155,59,0.5);
 }
 
 .hero{
   background:var(--navy);
   color:white;
-  padding:60px 0 25px;
+  padding:60px 0 35px;
 }
 
 .hero h1{
@@ -59,7 +85,9 @@ h1,h2,h3{
   line-height:1.1;
 }
 
-.gold{ color:var(--gold); }
+.gold{
+  color:var(--gold);
+}
 
 .btn-gold{
   background:var(--gold);
@@ -67,12 +95,6 @@ h1,h2,h3{
   border:none;
   border-radius:30px;
   padding:10px 28px;
-  text-decoration:none;
-}
-
-.btn-gold:hover{
-  background:#b6892f;
-  color:white;
 }
 
 .btn-soft{
@@ -81,12 +103,6 @@ h1,h2,h3{
   border:none;
   border-radius:30px;
   padding:10px 28px;
-  text-decoration:none;
-}
-
-.btn-soft:hover{
-  background:white;
-  color:#111;
 }
 
 .promo-card{
@@ -110,11 +126,39 @@ h1,h2,h3{
   font-weight:bold;
 }
 
-.benefit-bar{
+/* MOVING TEXT */
+.moving-bar{
   background:#111;
-  color:white;
+  overflow:hidden;
+  white-space:nowrap;
   padding:18px 0;
-  font-size:13px;
+}
+
+.moving-text{
+  display:inline-block;
+  color:white;
+  font-size:15px;
+  font-weight:bold;
+  animation:moveText 18s linear infinite;
+}
+
+.moving-text span{
+  margin-right:80px;
+}
+
+.moving-text i{
+  color:var(--gold);
+  margin-right:10px;
+}
+
+@keyframes moveText{
+  0%{
+    transform:translateX(100%);
+  }
+
+  100%{
+    transform:translateX(-100%);
+  }
 }
 
 .section-light{
@@ -146,8 +190,6 @@ h1,h2,h3{
   font-size:13px;
 }
 
-.category-card{ color:white; }
-
 .review-card{
   background:white;
   border:1px solid #eee;
@@ -155,7 +197,6 @@ h1,h2,h3{
   padding:18px;
   min-height:150px;
   font-size:13px;
-  color:#111;
 }
 
 .story-box{
@@ -163,37 +204,13 @@ h1,h2,h3{
   color:#111;
   border-radius:30px;
   padding:50px;
-  max-width:1050px;
-  margin:auto;
-}
-
-.video-wrap{
-  position:relative;
-  max-width:850px;
-  margin:0 auto 35px;
 }
 
 .video-thumb{
   width:100%;
   border-radius:20px;
-  max-height:500px;
+  max-height:450px;
   object-fit:cover;
-  display:block;
-}
-
-.play-btn{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:95px;
-  height:95px;
-  border:none;
-  border-radius:50%;
-  background:rgba(255,255,255,.9);
-  font-size:42px;
-  color:var(--navy);
-  box-shadow:0 10px 30px rgba(0,0,0,.25);
 }
 
 .newsletter{
@@ -204,10 +221,7 @@ h1,h2,h3{
 
 .newsletter-title{
   color:white;
-  font-family:Arial, sans-serif;
   font-weight:800;
-  line-height:1.2;
-  margin:0;
 }
 
 .newsletter-form{
@@ -218,7 +232,7 @@ h1,h2,h3{
 
 .newsletter-form input{
   flex:1;
-  min-width:240px;
+  min-width:220px;
   border:none;
   border-radius:50px;
   padding:14px 20px;
@@ -241,7 +255,6 @@ footer{
 
 footer a{
   color:white;
-  opacity:.8;
   text-decoration:none;
   display:block;
   margin-bottom:7px;
@@ -254,17 +267,26 @@ footer a{
 }
 
 @media(max-width:768px){
-  .hero{ text-align:center; }
-  .hero h1{ font-size:34px; }
-  .promo-card{ margin-left:auto; margin-right:auto; }
-  .benefit-bar .col{
-    min-width:50%;
-    margin-bottom:15px;
+  .hero{
+    text-align:center;
   }
-  .story-box{ padding:25px; }
-  .newsletter{ text-align:center; }
-  .newsletter-form{ flex-direction:column; }
-  .newsletter-form button{ width:100%; }
+
+  .hero h1{
+    font-size:34px;
+  }
+
+  .promo-card{
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .newsletter-form{
+    flex-direction:column;
+  }
+
+  .newsletter-form button{
+    width:100%;
+  }
 }
 </style>
 </head>
@@ -275,44 +297,57 @@ footer a{
   Sign up and get 20% off your first order. <u>Sign Up Now</u>
 </div>
 
-<nav class="navbar navbar-expand-lg">
-  <div class="container">
-    <a class="navbar-brand" href="#">SWEETEBU</a>
+<nav class="navbar">
+  <div class="container d-flex justify-content-between align-items-center">
 
-    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="logo">Sweetebu</div>
 
-    <div class="collapse navbar-collapse" id="nav">
-      <ul class="navbar-nav mx-auto gap-3">
-        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#story">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#categories">Products</a></li>
-        <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
-      </ul>
+    <input class="form-control rounded-pill w-25 d-none d-lg-block"
+    placeholder="Find sugarcane products...">
 
-      <input class="form-control rounded-pill w-25 d-none d-lg-block me-3" placeholder="Find sugarcane products...">
-      <i class="bi bi-heart me-3"></i>
-      <i class="bi bi-cart me-3"></i>
-      <i class="bi bi-person-circle"></i>
+    <div class="nav-icons">
+
+      <a href="wishlist.html" class="icon-btn">
+        <i class="bi bi-heart"></i>
+      </a>
+
+      <a href="cart.html" class="icon-btn">
+        <i class="bi bi-cart"></i>
+      </a>
+
+      <a href="profile.html" class="icon-btn">
+        <i class="bi bi-person-circle"></i>
+      </a>
+
     </div>
+
   </div>
 </nav>
 
 <section class="hero">
   <div class="container">
+
     <div class="row align-items-center">
 
       <div class="col-md-6">
-        <h1>From Sugarcane<br>To <span class="gold">Sustainable</span> Living</h1>
 
-        <p>Natural. Nutritious. Innovative.<br>Good for you, Good for the Earth.</p>
+        <h1>
+          From Sugarcane<br>
+          To <span class="gold">Sustainable</span> Living
+        </h1>
 
-        <a href="#categories" class="btn btn-gold me-2">Shop Now</a>
-        <a href="#top-selling" class="btn btn-soft">View Best Sellers</a>
+        <p>
+          Natural. Nutritious. Innovative.<br>
+          Good for you, Good for the Earth.
+        </p>
+
+        <button class="btn-gold me-2">Shop Now</button>
+        <button class="btn-soft">View Best Sellers</button>
 
         <div class="promo-card">
+
           <div class="row align-items-center">
+
             <div class="col-4">
               <small>LIMITED TIME OFFER</small>
               <h4>20% OFF</h4>
@@ -320,6 +355,7 @@ footer a{
             </div>
 
             <div class="col-8 d-flex justify-content-around">
+
               <div class="count-box">
                 <h5 id="days">07</h5>
                 <small>DAYS</small>
@@ -339,45 +375,71 @@ footer a{
                 <h5 id="seconds">32</h5>
                 <small>SECS</small>
               </div>
+
             </div>
+
           </div>
+
         </div>
+
       </div>
 
       <div class="col-md-6 text-center mt-4 mt-md-0">
-        <img src="images/main-products.png" class="img-fluid" alt="Products">
+        <img src="image ict552/main product (l).png" class="img-fluid" alt="Main Products">
       </div>
 
     </div>
+
   </div>
 </section>
 
-<div class="benefit-bar">
-  <div class="container">
-    <div class="row text-center">
-      <div class="col"><b>100% Natural</b><br>No Artificial Additives</div>
-      <div class="col"><b>Sustainable</b><br>Zero Waste</div>
-      <div class="col"><b>Local Famous</b><br>Empowering Community</div>
-      <div class="col"><b>Secure Payment</b><br>Safe & Trusted</div>
-      <div class="col"><b>Fast Delivery</b><br>Across Malaysia</div>
-    </div>
+<div class="moving-bar">
+  <div class="moving-text">
+
+    <span>
+      <i class="bi bi-flower1"></i>
+      100% Natural • No Artificial Additives
+    </span>
+
+    <span>
+      <i class="bi bi-recycle"></i>
+      Sustainable • Zero Waste
+    </span>
+
+    <span>
+      <i class="bi bi-people-fill"></i>
+      Local Farmers • Empowering Community
+    </span>
+
+    <span>
+      <i class="bi bi-shield-check"></i>
+      Secure Payment • Safe & Trusted
+    </span>
+
+    <span>
+      <i class="bi bi-truck"></i>
+      Fast Delivery • Across Malaysia
+    </span>
+
   </div>
 </div>
 
-<section class="section-light" id="top-selling">
+<section class="section-light">
   <div class="container">
+
     <h2 class="text-center mb-5">TOP SELLING</h2>
 
     <div class="row g-5 justify-content-center">
+
       <div class="col-md-3 product-card">
-        <img src="images/toner.png" alt="Sugarcane Glow Toner">
+        <img src="image ict552/toner (l).png" alt="Sugarcane Toner">
         <h6 class="mt-3">Sugarcane Glow Toner</h6>
         <div class="stars">★★★★★ <span class="text-dark">4.5/5</span></div>
         <b>RM 30.00</b>
       </div>
 
       <div class="col-md-3 product-card">
-        <img src="images/sleep-mist.png" alt="Sugarcane Sleep Mist">
+        <img src="image ict552/sleepmist (l).png" alt="Sugarcane Sleep Mist">
         <h6 class="mt-3">Sugarcane Sleep Mist</h6>
         <div class="stars">★★★★☆ <span class="text-dark">3.5/5</span></div>
         <b>RM 49.90</b>
@@ -386,65 +448,69 @@ footer a{
       </div>
 
       <div class="col-md-3 product-card">
-        <img src="images/snack.png" alt="Sugarcane Energy Snack">
+        <img src="image ict552/energy snack (l).png" alt="Sugarcane Energy Snack">
         <h6 class="mt-3">Sugarcane Energy Snack</h6>
         <div class="stars">★★★★★ <span class="text-dark">4.5/5</span></div>
         <b>RM 15.00</b>
       </div>
+
     </div>
+
   </div>
 </section>
 
-<section class="section-dark" id="categories">
+<section class="section-dark">
   <div class="container">
+
     <h2 class="text-center mb-5">BEST CATEGORIES</h2>
 
     <div class="row g-4">
+
       <div class="col-md-3 category-card">
-        <img src="images/food.png" alt="Food and Beverages">
+        <img src="image ict552/f&b(l).png" alt="Food and Beverages">
         <h6 class="mt-2">Food & Beverages</h6>
         <div class="stars">★★★★★</div>
         <b>RM 24 - RM 45</b>
       </div>
 
       <div class="col-md-3 category-card">
-        <img src="images/health.png" alt="Health">
+        <img src="image ict552/health (l).png" alt="Health">
         <h6 class="mt-2">Health</h6>
         <div class="stars">★★★★☆</div>
         <b>RM 35 - RM 70</b>
       </div>
 
       <div class="col-md-3 category-card">
-        <img src="images/personal-care.png" alt="Personal Care and Wellness">
+        <img src="image ict552/p&c (l).png" alt="Personal Care">
         <h6 class="mt-2">Personal Care & Wellness</h6>
         <div class="stars">★★★★☆</div>
         <b>RM 28 - RM 65</b>
       </div>
 
       <div class="col-md-3 category-card">
-        <img src="images/packaging.png" alt="Food Packaging and Containers">
+        <img src="image ict552/packaging (l) c.png" alt="Packaging">
         <h6 class="mt-2">Food Packaging & Containers</h6>
         <div class="stars">★★★★★</div>
         <b>RM 12 - RM 40</b>
       </div>
+
     </div>
 
-    <div class="text-center mt-5">
-     <a href="categories.html" class="btn btn-light rounded-pill px-5">View All</a>
-    </div>
   </div>
 </section>
 
-<section class="section-light" id="reviews">
+<section class="section-light">
   <div class="container">
+
     <h2 class="mb-5">OUR HAPPY CUSTOMERS</h2>
 
     <div class="row g-4">
+
       <div class="col-md-3">
         <div class="review-card">
           <div class="stars">★★★★★</div>
           <b>Sarah M. ✅</b>
-          <p>“The sugarcane toner made my skin feel fresh and calming. Packaging pun premium...”</p>
+          <p>The sugarcane toner made my skin feel fresh and calming.</p>
         </div>
       </div>
 
@@ -452,7 +518,7 @@ footer a{
         <div class="review-card">
           <div class="stars">★★★★★</div>
           <b>Alex K. ✅</b>
-          <p>“Love the sleep mist so much! The scent feels really calming and helps me relax...”</p>
+          <p>Love the sleep mist so much. The scent feels really calming.</p>
         </div>
       </div>
 
@@ -460,7 +526,7 @@ footer a{
         <div class="review-card">
           <div class="stars">★★★★★</div>
           <b>Aina L. ✅</b>
-          <p>“The most refreshing natural product I’ve ever tried.”</p>
+          <p>The most refreshing natural product I have ever tried.</p>
         </div>
       </div>
 
@@ -468,15 +534,18 @@ footer a{
         <div class="review-card">
           <div class="stars">★★★★★</div>
           <b>Moana R. ✅</b>
-          <p>“Aesthetic packaging and natural smell. Really worth buying.”</p>
+          <p>Aesthetic packaging and natural smell. Really worth buying.</p>
         </div>
       </div>
+
     </div>
+
   </div>
 </section>
 
-<section class="section-dark" id="story">
+<section class="section-dark">
   <div class="container">
+
     <div class="story-box">
 
       <div class="text-center mb-4">
@@ -484,52 +553,57 @@ footer a{
         <p class="text-muted">Behind the Scene on the Making of Our Product!</p>
       </div>
 
-      <div class="video-wrap">
-        <img src="images/behind-scene.png" class="video-thumb" alt="Behind the scene video thumbnail">
-        <button class="play-btn">
-          <i class="bi bi-play-fill"></i>
-        </button>
-      </div>
+      <img src="image ict552/BTS.jpeg" class="video-thumb" alt="Behind Scene">
 
-      <div class="newsletter">
+      <div class="newsletter mt-5">
+
         <div class="row align-items-center g-4">
+
           <div class="col-lg-5">
-            <h3 class="newsletter-title">STAY UP TO DATE ABOUT<br>OUR LATEST OFFERS</h3>
+            <h3 class="newsletter-title">
+              STAY UP TO DATE ABOUT OUR LATEST OFFERS
+            </h3>
           </div>
 
           <div class="col-lg-7">
             <div class="newsletter-form">
               <input type="email" placeholder="Enter your email address">
-              <button>Subscribe to Newsletter</button>
+              <button>Subscribe</button>
             </div>
           </div>
+
         </div>
+
       </div>
 
     </div>
+
   </div>
 </section>
 
 <footer>
   <div class="container">
+
     <div class="row g-4">
 
       <div class="col-md-3">
-        <h4>SWEETEBU</h4>
-        <p>Crafted from sugarcane for a healthier, more sustainable lifestyle.</p>
+        <h4>Sweetebu</h4>
+        <p>
+          Crafted from sugarcane for a healthier and more sustainable lifestyle.
+        </p>
       </div>
 
       <div class="col-md-2">
         <div class="footer-title">COMPANY</div>
-        <a href="#story">About Us</a>
-        <a href="#story">Our Story</a>
-        <a href="#categories">Sustainability</a>
+        <a href="#">About Us</a>
+        <a href="#">Our Story</a>
+        <a href="#">Sustainability</a>
         <a href="#">Careers</a>
       </div>
 
       <div class="col-md-2">
         <div class="footer-title">HELP</div>
-        <a href="#reviews">Customer Support</a>
+        <a href="#">Customer Support</a>
         <a href="#">Shipping</a>
         <a href="#">Returns</a>
         <a href="#">FAQ</a>
@@ -537,26 +611,32 @@ footer a{
 
       <div class="col-md-2">
         <div class="footer-title">PRODUCTS</div>
-        <a href="#categories">Food & Beverages</a>
-        <a href="#categories">Health</a>
-        <a href="#categories">Personal Care</a>
-        <a href="#categories">Packaging</a>
+        <a href="#">Food & Beverages</a>
+        <a href="#">Health</a>
+        <a href="#">Personal Care</a>
+        <a href="#">Packaging</a>
       </div>
 
       <div class="col-md-3">
         <div class="footer-title">RESOURCES</div>
-        <a href="#story">Blog</a>
-        <a href="#story">Wellness Tips</a>
-        <a href="#story">Eco Lifestyle</a>
-        <a href="#story">Newsletter</a>
+        <a href="#">Blog</a>
+        <a href="#">Wellness Tips</a>
+        <a href="#">Eco Lifestyle</a>
+        <a href="#">Newsletter</a>
       </div>
 
     </div>
 
     <hr>
-    <p class="text-center mb-0">© 2026 Sweetebu. All Rights Reserved.</p>
+
+    <p class="text-center mb-0">
+      © 2026 Sweetebu. All Rights Reserved.
+    </p>
+
   </div>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
 let days = 7;
@@ -565,6 +645,7 @@ let minutes = 55;
 let seconds = 32;
 
 function updateCountdown(){
+
   seconds--;
 
   if(seconds < 0){
@@ -587,18 +668,24 @@ function updateCountdown(){
     hours = 0;
     minutes = 0;
     seconds = 0;
+    clearInterval(timer);
   }
 
-  document.getElementById("days").innerText = String(days).padStart(2,"0");
-  document.getElementById("hours").innerText = String(hours).padStart(2,"0");
-  document.getElementById("minutes").innerText = String(minutes).padStart(2,"0");
-  document.getElementById("seconds").innerText = String(seconds).padStart(2,"0");
+  document.getElementById("days").innerText =
+  String(days).padStart(2,"0");
+
+  document.getElementById("hours").innerText =
+  String(hours).padStart(2,"0");
+
+  document.getElementById("minutes").innerText =
+  String(minutes).padStart(2,"0");
+
+  document.getElementById("seconds").innerText =
+  String(seconds).padStart(2,"0");
 }
 
-setInterval(updateCountdown,1000);
+let timer = setInterval(updateCountdown, 1000);
 </script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
