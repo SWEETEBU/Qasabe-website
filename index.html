@@ -723,6 +723,26 @@ footer a{
   color: var(--navy);
 }
 html { scroll-behavior: smooth; }
+
+.video-scroll-container {
+    /* Menghadkan tinggi kontena kanan supaya separuh/ngam dengan tinggi video tunggal di kiri */
+    max-height: 320px; 
+    overflow-y: auto;
+    padding-right: 8px; /* Mengelakkan video rapat dengan scrollbar */
+  }
+
+  /* Rekaan cantik untuk Scrollbar belah kanan */
+  .video-scroll-container::-webkit-scrollbar {
+    width: 6px;
+  }
+  .video-scroll-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  .video-scroll-container::-webkit-scrollbar-thumb {
+    background: #c99b3b; /* Warna gold tema Qasabe */
+    border-radius: 10px;
+  }
 </style>
 </head>
 <body>
@@ -743,7 +763,7 @@ html { scroll-behavior: smooth; }
     <div class="collapse navbar-collapse" id="nav">
       <ul class="navbar-nav mx-auto gap-3">
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#story">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
         
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -1076,20 +1096,24 @@ html { scroll-behavior: smooth; }
         <p class="text-muted">From digital imagination to real-life action. Dive into our creation below!</p>
       </div>
      
-      <div class="row g-4">
-        <div class="col-md-6">
-          <video controls class="video-thumb w-100">
-            <source src="images/video.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="col-md-6">
-          <video controls class="video-thumb w-100">
-            <source src="images/video2.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
+      <div class="row g-4 align-items-stretch">
+  <div class="col-md-6">
+    <video controls class="video-thumb w-100 rounded shadow-sm">
+      <source src="images/video.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="col-md-6">
+    <div class="video-scroll-container d-flex flex-column gap-3">
+      <video controls class="video-thumb w-100 rounded shadow-sm">
+        <source src="images/video2.mp4" type="video/mp4">
+      </video>
+      <video controls class="video-thumb w-100 rounded shadow-sm">
+        <source src="images/video2i.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
+</div>
 </section>
 
 <section class="qasabe-contact-section" id="contact">
